@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joca-arch-repo</title>
+    <link rel="icon" href="lain.ico" type="image/x-icon">
+    <style>
+        :root {
+            --bg-color: #161616;
+            --text-color: #e0e0e0;
+            --link-color: #00FF00;
+            --hover-color: #ff00ff;
+            --border-color: #ffffff;
+            --container-bg-color: transparent;
+
+            --code-command-color: #569CD6;
+            --code-tool-color: #DCDCAA;
+            --code-flag-color: #CE9178;
+            --code-value-color: #9CDCFE;
+            --code-config-section-color: #B5CEA8;
+            --code-config-key-color: #DCDCAA;
+            --code-operator-color: #C586C0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: url('lain-spin.gif');
+            background-repeat: no-repeat;
+            background-position: center -40px;
+            background-size: 176px 175px;
+            background-attachment: scroll;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-transform: lowercase;
+            text-align: center;
+            width: 100%;
+            color: var(--link-color);
+            background: transparent;
+            z-index: 1;
+        }
+
+        .links {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--link-color);
+            margin: 0 7.5px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .links a:hover,
+        .links a:focus {
+            color: var(--hover-color);
+        }
+
+        .about-repo-section {
+            width: 100%;
+            max-width: 700px;
+            margin-top: 20px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .about-repo-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .responsive-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .packages-section {
+            flex: 1 1 300px;
+            margin-top: 0;
+            padding: 0;
+            background-color: var(--container-bg-color);
+            border: none;
+            border-radius: 5px;
+        }
+
+        .packages-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .packages-section p {
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        .package-item {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .package-item h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--link-color);
+            text-transform: lowercase;
+            text-align: center;
+        }
+
+        .package-item p {
+            margin: 5px 0;
+            color: #aaaaaa;
+            text-align: center;
+        }
+
+        .package-item a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .package-item a:hover,
+        .package-item a:focus {
+            color: var(--hover-color);
+        }
+
+        .installation-section {
+            width: 100%;
+            max-width: 700px;
+            margin-top: 40px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .installation-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-transform: lowercase;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .installation-section p {
+            margin-bottom: 10px;
+        }
+
+        .installation-section pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            text-align: left;
+            margin: 20px auto;
+            max-width: fit-content;
+            border: 1px solid var(--border-color);
+        }
+
+        .installation-section code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .installation-section code .command {
+            color: var(--code-command-color);
+        }
+        .installation-section code .tool {
+            color: var(--code-tool-color);
+        }
+        .installation-section code .flag {
+            color: var(--code-flag-color);
+        }
+        .installation-section code .value {
+            color: var(--code-value-color);
+        }
+        .installation-section code .config-section {
+            color: var(--code-config-section-color);
+        }
+        .installation-section code .config-key {
+            color: var(--code-config-key-color);
+        }
+        .installation-section code .operator {
+            color: var(--code-operator-color);
+        }
+    </style>
+</head>
+<body>
+    <h1>Jocadbz's Arch Repo</h1>
+
+    <div class="links">
+        <a href="#about">about</a>
+        <a href="#packages">packages</a>
+        <a href="#install">install</a>
+    </div>
+
+    <section id="about" class="about-repo-section">
+        <h2>about this repository</h2>
+        <p>
+            Welcome to joca-arch-repo! This is a personal Arch Linux repository where I host various packages that I maintain or find useful.
+            <br><br>
+            Feel free to explore the packages section and follow the installation instructions to add this repository to your system.
+        </p>
+    </section>
+
+    <div class="responsive-row">
+        <section id="packages" class="packages-section">
+            <h2>packages</h2>
+            <div class="package-list">
+                <div class="package-item">
+                    <h3>example-package</h3>
+                    <p>A sample package demonstrating the listing format.</p>
+                    <a href="#" target="_blank">source</a> | <a href="#" target="_blank">pkgbuild</a>
+                </div>
+                <div class="package-item">
+                    <h3>another-package</h3>
+                    <p>Description for another package you might host.</p>
+                    <a href="#" target="_blank">source</a> | <a href="#" target="_blank">pkgbuild</a>
+                </div>
+            </div>
+            <p>
+                <i>(More packages will be listed here soon!)</i>
+            </p>
+        </section>
+    </div>
+
+    <section id="install" class="installation-section">
+        <h2>installation instructions</h2>
+        <p>
+            To add joca-arch-repo to your system, follow these steps:
+        </p>
+        <pre><code>
+<span class="command">sudo</span> <span class="tool">pacman-key</span> <span class="flag">--recv-key</span> <span class="value">B1836DCE2F50BDF7</span> <span class="flag">--keyserver</span> <span class="value">keyserver.ubuntu.com</span>
+<span class="command">sudo</span> <span class="tool">pacman-key</span> <span class="flag">--lsign-key</span> <span class="value">B1836DCE2F50BDF7</span>
+        </code></pre>
+        <p>
+            Then, add the following to your <code>/etc/pacman.conf</code>:
+        </p>
+        <pre><code>
+<span class="config-section">[joca-arch-repo]</span>
+<span class="config-key">Server</span> <span class="operator">=</span> <span class="value">https://repo.jocadbz.xyz/x86_64</span>
+        </code></pre>
+        <p>
+            Finally, synchronize your package databases and upgrade your system:
+        </p>
+        <pre><code>
+<span class="command">sudo</span> <span class="tool">pacman</span> <span class="flag">-Syu</span>
+        </code></pre>
+    </section>
+
+</body>
+</html>
