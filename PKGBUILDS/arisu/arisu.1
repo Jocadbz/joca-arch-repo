@@ -1,0 +1,60 @@
+.TH ARISU 1 "July 08, 2024" "Arisu 0.1.0" "User Commands"
+.SH NAME
+arisu \- Seamless AI coding and editing on the terminal
+.SH SYNOPSIS
+.B arisu
+[\fIOPTIONS\fR] [\fIPROMPT\fR]
+.SH DESCRIPTION
+.B Arisu
+is an AI assistant designed for seamless coding and editing directly within your terminal session. It can understand commands for running shell commands, reading files, and editing files, expressed through special tags.
+When launched without a prompt, it enters an interactive chat mode. When launched with a prompt, it sends the prompt to the AI and processes the response.
+.SH OPTIONS
+.TP
+.B \-\-setmodel \fImodel\fR
+Sets the default AI model to use. Supported models include:
+.RS
+.IP "Gemini:"
+.IR gemini ,
+.IR gemini-2.0-flash ,
+.IR gemini-2.5-flash ,
+.IR gemini-2.5-pro
+(
+.IR gemini
+defaults to
+.IR gemini-2.0-flash )
+.IP "Grok:"
+Any Grok model name (e.g.,
+.IR grok-2-latest )
+.IP "OpenAI:"
+.IR gpt-4.1-mini ,
+.IR gpt-4.1 ,
+.IR gpt-4o ,
+.IR gpt-4o-mini ,
+.IR o3 ,
+.IR gpt-3.5-turbo
+.RE
+.TP
+.B \-\-auto-edit \fItrue\|false\fR
+Enables or disables automatic application of file edits suggested by the AI without confirmation. Defaults to \fBfalse\fR.
+.TP
+.B \-\-auto-run \fItrue\|false\fR
+Enables or disables automatic execution of shell commands suggested by the AI without confirmation. Defaults to \fBfalse\fR.
+.SH AI INTERACTION
+Arisu understands special tags in the AI's responses to trigger actions:
+.TP
+.B <RUN>
+.br
+shell_command_here
+.br
+</RUN>
+Executes the provided shell command.
+.TP
+.B <READ>filename.txt</READ>
+Reads the content of \fIfilename.txt\fR and sends it back to the AI.
+.TP
+.B <EDIT>
+.br
+filename.txt
+.br
+complete_new_content_here
+.br

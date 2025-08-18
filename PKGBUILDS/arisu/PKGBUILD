@@ -1,0 +1,28 @@
+# Maintainer: Joaquim Madureira <joca at jocadbz dot xyz> (You can fill this in if you plan to submit to AUR)
+
+pkgname=arisu
+_pkgname=arisu
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Seamless AI coding and editing on the terminal"
+arch=('x86_64')
+url="https://github.com/jocadbz/arisu"
+license=('Unlicense')
+depends=('glibc')
+makedepends=('go' 'git')
+
+source=(arisu.1 "${_pkgname}::git+${url}.git")
+sha256sums=('SKIP' 'SKIP')
+
+build() {
+  cd "${_pkgname}"
+  go mod tidy
+  go build -ldflags="-s -w" -o "${_pkgname}" .
+}
+
+package() { 
+  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -d "${pkgdir}/usr/share/man/man1/"
+  install -Dm644 "${srcdir}/arisu.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+  gzip -9 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+}
