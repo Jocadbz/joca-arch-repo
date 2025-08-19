@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Iso2God GUI
+Comment=Convert Xbox 360 ISOs to GOD format
+Exec=iso2god-gui
+Icon=application-x-iso
+Terminal=false
+Type=Application
+Categories=Utility;Game;
+StartupNotify=true

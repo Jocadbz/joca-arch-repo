@@ -1,0 +1,14 @@
+pkgname=iso2god-rs
+pkgver=1.8.1
+pkgrel=1
+pkgdesc="A command-line tool to convert Xbox 360 and original Xbox ISOs into an Xbox 360 compatible Games-On-Demand file format."
+arch=('x86_64')
+url="https://github.com/iliazeus/iso2god-rs"
+license=('MIT')
+depends=('glibc')
+source=("https://github.com/iliazeus/iso2god-rs/releases/download/v1.8.1/iso2god-x86_64-linux")
+sha256sums=('SKIP')
+
+package() {
+  install -Dm755 "iso2god-x86_64-linux" "$pkgdir/usr/bin/iso2god-rs"
+}

@@ -1,0 +1,25 @@
+pkgname=iso2god-gui
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A GTK3 frontend for the iso2god-rs program."
+arch=('x86_64')
+url="https://github.com/jocadbz/iso2god-rs-gui"
+license=('Unlicense')
+depends=('gtk3' 'iso2god-rs')
+makedepends=('rust' 'cargo')
+source=("${pkgname}::git+${url}.git#branch=main"
+        "${pkgname}.desktop")
+sha256sums=('SKIP'
+            'SKIP')
+
+build() {
+  cd "${pkgname}"
+  cargo build --release --locked
+}
+
+package() {
+  cd "${pkgname}"
+  install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "../${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+}
