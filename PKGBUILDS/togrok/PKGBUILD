@@ -1,0 +1,13 @@
+pkgname=togrok
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Quick script for feeding code into AI"
+arch=('x86_64')
+url="https://github.com/Jocadbz/togrok"
+license=('MIT')
+source=("https://github.com/Jocadbz/togrok/releases/download/v1.0.0/togrok")
+sha256sums=('126980e822fab03305eb6e9d1211dedcc92e578fe49b6aef265570dab7862e0e')
+
+package() {
+  install -Dm755 "togrok" "$pkgdir/usr/bin/togrok"
+}
