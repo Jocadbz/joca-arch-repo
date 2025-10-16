@@ -26,6 +26,7 @@ To add joca-arch-repo to your system, follow these steps:
 sudo pacman-key --recv-key B1836DCE2F50BDF7 --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key B1836DCE2F50BDF7
 ```
+This will add all the necessary keys.
 
 Then, add the following to your `/etc/pacman.conf`:
 
