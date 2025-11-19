@@ -3,7 +3,7 @@
 pkgname=arisu
 _pkgname=arisu
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Seamless AI coding and editing on the terminal"
 arch=('x86_64')
 url="https://github.com/jocadbz/arisu"
