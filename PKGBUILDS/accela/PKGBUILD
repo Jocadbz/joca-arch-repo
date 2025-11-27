@@ -1,0 +1,25 @@
+# Maintainer: Joaquim Madureira <joca at jocadbz dot xyz>
+
+pkgname=accela
+_pkgname=accela
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Jocadbz's custom editor"
+arch=('x86_64')
+url="https://github.com/jocadbz/${_pkgname}"
+license=('MIT')
+depends=('glibc')
+makedepends=('go' 'git')
+
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "${_pkgname}"
+  go mod tidy
+  go build -ldflags="-s -w" -o "${_pkgname}" .
+}
+
+package() { 
+  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+}
