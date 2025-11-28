@@ -2,13 +2,16 @@
 
 pkgname=accela
 _pkgname=accela
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Jocadbz's custom editor"
 arch=('x86_64')
 url="https://github.com/jocadbz/${_pkgname}"
 license=('MIT')
 depends=('glibc')
+optdepends=('xclip: copy/paste support'
+            'xsel: copy/paste support (alternative)'
+            'wl-clipboard: copy/paste support (wayland)')
 makedepends=('go' 'git')
 
 source=("${_pkgname}::git+${url}.git")
